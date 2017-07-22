@@ -9,4 +9,4 @@ The following list contains required tools:
 * make
 * Dia
 
-The project also contains the profile for textstudio.
+The project also contains the profile for textstudio (http://www.texstudio.org/) for easier preparation of LaTeX documents.
