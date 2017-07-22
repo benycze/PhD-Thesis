@@ -1,0 +1,52 @@
+\chapter{Abstract}
+%\chapter*{Abstract and Contributions}
+%\addcontentsline{toc}{chapter}{\protect\numberline{}{Abstract and contributions}}
+
+OpenFlow, as the most popular embodiment of Software-Defined Networking, provides a way
+to network dataplane configuration at runtime. The OpenFlow specification strictly defines a set of supported protocols 
+and actions for further processing of incoming traffic (i.e., switches are still mostly fixed). 
+However, modern requirements on networking hardware have a dynamic
+character and administrators of high-end networks want to react to new protocols, security threats,
+novel approaches in traffic engineering, and so on. This isn't feasible with static network hardware and
+leads to the need to replace the hardware more often than desired.
+
+The aim of my \thesis{} is to provide the process of mapping from abstract language to the architecture of network device which is 
+suitable for automatic generation and capable to hit processing speed of 100\,Gbps in single FPGA. 
+The architecture of network device is based on predefined interfaces and modules which are connected to a high-speed processing pipeline.
+The text provides details of transformation process to individual blocks of network 
+device: parser, deparser, Match+Action table, Match+Action router and Match+Action group. 
+The text also demonstrates the usage of High-Level Synthesis tools to provide a custom 
+processing engine which is capable
+to hit speed of 100\,Gbps. Finally, the text provides three use cases for demonstration of flexibility and easy extensibility
+with new protocols and actions. Each use case was described in P4 language, translated to VHDL and tested in real hardware environment. 
+The results show that generated devices are capable to meet throughput in range from 77.6 to 100\,Gbps.
+
+%\bigskip
+%\noindent The contributions of my \thesis{} are summarized in the following list:
+%\begin{enumerate}
+%    \item Introduction of modular architecture which is suitable for automatic generation of high-speed packet processing devices 
+%    from abstract description.
+%    \item Introduction of structure and mapping process for individual parts of generated packet processing device: 
+%    Match+Action router, Match+Action table, parser and deparser. 
+%    \item Tool, which generates the proposed architecture of packet processing device from abstract description in P4 language.
+%    \item Experimental results of generated packet processing devices, including tests in real hardware platform.
+%\end{enumerate}
+
+\bigskip
+
+\noindent\textbf{Keywords:}\\
+\indent FPGA, High-Level Synthesis, Transformation, P4, SDN, High-Speed Computer Networks, 100\,Gbps, VHSIC Hardware Description Language.
+
+%\vfill
+%If you present in this thesis work achieved jointly with some other people except for your supervisor or co-supervisor, then this is a place to put their statements clarifying your qualitative and quantitative participation.
+%For example,
+
+%\noindent As a collaborator of {\FirstandFamilyName} and a co-author of his papers, I agree with {\FirstandFamilyName}'s authorship of the research results, as stated in this dissertation thesis.
+
+%\bigskip\bigskip
+%\begin{flushright}
+%    \begin{tabular}{p{6cm}}
+%           \dotfill\\
+%           {\em Name Surname}
+%    \end{tabular}
+%\end{flushright}

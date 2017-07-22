@@ -1,0 +1,242 @@
+%%
+% HISTORY:
+%
+% Daniel Sykora (11.01.2006)
+%  + added \PhDSpecialization on bottom of the main page
+%  + added \Department on the top of the main page
+%  + changed text "PhD program" to the official "Doctoral study programme"
+%
+% Daniel Sykora (26.12.2004)
+%  + automatic detection of PDF (switching EPS and PDF figures)
+%  + \SupervisorAffiliation and \CoSupervisorAffiliation variable
+%  + automatic detection of optional \CoSupervisor variable
+%  + different layout and fonts for title pages
+%
+% Pavel Tvrdik  (17.12.2004)
+%  + setting left-page and right-page margins for twoside-printing the reports
+%  + adding several macros for controlling the layout of the first pages
+%    of the thesis (front page, abstract, acknowledgements, table-of-contents)
+%%
+
+%preamble declarations
+% \tolerance=500
+%\raggedbottom
+%\parskip=0pt
+%\parindent=0pt
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{1ex}
+% \setcounter{secnumdepth}{3}
+% \setcounter{tocdepth}{3}
+%\def\clqq{\vbox to0pt{\vss\hbox{\char34}\kern-1.4ex}}
+%\chardef\crqq=92
+%\def\uv{\bgroup\aftergroup\closequotes
+%\leavevmode\clqq\let\next=}
+%\def\closequotes{\unskip\crqq\relax}
+% \def\uv#1{``#1''}
+% \def\whiten{}
+
+
+\def\ifndef#1{\expandafter\ifx\csname#1\endcsname\relax} % check whether macro is defined
+
+%inserting figures either in pdf or eps
+\newcommand\cobrx[2]
+ {\begin{center}
+  \ifndef{pdfpagewidth} % check if PDFLaTeX is processing this document
+    % if not then include EPS figures
+    \includegraphics*[width=#1]{#2.eps}\else
+    % otherwise include PDF figures
+    \includegraphics*[width=#1]{#2.pdf}
+   \fi
+  \end{center}}
+
+\newcommand\coverpagestarts
+{\pagenumbering{roman}\thispagestyle{empty}
+\begin{center}
+\large\sffamily
+\University\\
+\Faculty\\
+\Department\\
+\vglue 10mm
+\cobrx{50mm}{logo/LogoCVUT}
+\vglue 30mm
+{\large\bfseries\DissTitle}\\
+\bigskip
+{by}\\
+\bigskip
+{\large\emph{\FirstandFamilyName}}\\
+\vfill
+{A dissertation thesis submitted to\\the {\Faculty}, {\University},\\
+in partial fulfilment of the requirements for the degree of Doctor.}\\
+\vglue 20mm
+{Dissertation degree study programme: \PhDProgram}
+\ifx\PhDSpecialization\undefined\relax\else{\\{Specialization: \PhDSpecialization}}\fi\\
+\bigskip
+\Month\ \Year
+\end{center}
+\newpage
+\rule{0pt}{0pt}
+\vfill
+\begin{description}
+\item[Supervisor:]\ \\
+\Supervisor\\
+\SupervisorAffiliation
+\end{description}
+\ifndef{CoSupervisor}\relax\else\bigskip
+\begin{description}
+\item[Co-Supervisor:]\ \\
+\CoSupervisor\\
+\CoSupervisorAffiliation\\
+\end{description}
+\vglue 1cm
+\fi
+Copyright {\copyright} {\Year} {\FirstandFamilyName}
+}
+
+\newcommand\mainbodystarts{
+\pagestyle{headings}\pagenumbering{arabic}\setcounter{page}{1}
+}
+
+%include any longer words that by default hyphenate improperly
+% \hyphenation{di-men-sion-al ma-te-ma-ti-ky hard-ware trans-fer-able}
+
+%Chapters start at odd pages if you include:
+%\newcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+% into /usr/lib/texmf/tex/latex/latex/book.cls
+
+%your specific macros
+
+%structuring of mathematical texts
+% \newtheorem{definition}{Definition}[section]
+% \newtheorem{remark}{Remark}[section]
+% \newtheorem{preposition}{Preposition}[section]
+% \newtheorem{assumption}{Assumption}[section]
+% \newtheorem{lemma}{Lemma}[section]
+% \newtheorem{note}{Note}[section]
+% \newtheorem{example}{Example}[section]
+% \newtheorem{corollary}{Corollary}[section]
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{proposition}{Proposition}[section]
+% % \newtheorem{algorithm}{Algorithm}[section]
+% \newtheorem{property}{Property}[section]
+% \newtheorem{observation}{Observation}[section]
+%
+% \newcommand{\bcen}{\begin{center}}
+% \newcommand{\ecen}{\end{center}}
+% \newcommand{\blem}{\begin{lemma}\sl}
+% \newcommand{\elem}{\end{lemma}\rm}
+% \newcommand{\bnote}{\begin{note}\rm}
+% \newcommand{\enote}{\end{note}}
+% \newcommand{\bcor}{\begin{corollary}\sl}
+% \newcommand{\ecor}{\end{corollary}\rm}
+% \newcommand{\bdefi}{\begin{definition}\rm}
+% \newcommand{\edefi}{\end{definition}}
+% \newcommand{\btheo}{\begin{theorem}\sl}
+% \newcommand{\etheo}{\end{theorem}\rm}
+% \newcommand{\bprop}{\begin{proposition}\sl}
+% \newcommand{\eprop}{\end{proposition}\rm}
+% \newcommand{\bexam}{\begin{example}\rm}
+% \newcommand{\eexam}{\end{example}}
+% %
+% \newcommand{\bfig}{\begin{figure}\begin{center}}
+% \newcommand{\efig}{\end{center}\end{figure}}
+% \newcommand{\btab}{\begin{table}\begin{center}}
+% \newcommand{\etab}{\end{center}\end{table}}
+% \newcommand{\benum}{\begin{enumerate}}
+% \newcommand{\eenum}{\end{enumerate}}
+% \newcommand{\bitem}{\begin{itemize}}
+% \newcommand{\eitem}{\end{itemize}}
+% \newcommand{\bflushr}{\begin{flushright}}
+% \newcommand{\eflushr}{\end{flushright}}
+
+
+% \def\TOPRbox#1#2{\setbox0\hbox{\framebox{#2}}\vbox{\hbox to\wd0{\hss\hbox{#1}\hss}\kern 2pt\hbox to\wd0{\hss\hbox{\rotatebox{90}{\hbox{$=$}}}\hss}\kern 2pt\copy0}}
+% \def\BOTRbox#1#2{\setbox0\hbox{\framebox{#2}}\vbox{\copy0\kern 2pt\hbox to\wd0{\hss\hbox{\rotatebox{90}{\hbox{$=$}}}\hss}\kern 2pt\hbox to\wd0{\hss\hbox{#1}\hss}}}
+% \def\eqc#1{%
+% \setbox0\hbox{$=$}%
+% \setbox1\hbox to\wd0{\hss$\downarrow$\hss}%
+% \setbox3\hbox{\framebox{\vbox{#1}}}
+% \setbox2\hbox to\wd0{\hss\box3\hss}
+% \vbox{\box2\kern 5pt\box1\box0}}
+
+%mark for the end of a proof or theorem
+% \def\sq{\hfill\hbox{\rlap{$\sqcap$}$\sqcup$}\vskip \bigskipamount}
+
+% \def\flcaption#1{\figurename{ }\addtocounter{figure}{1}\thefigure: #1%
+% \addcontentsline{lof}{figure}{\numberline {\thefigure}{\ignorespaces #1}}}
+% \def\tbcaption#1{\tablename{ }\addtocounter{table}{1}\thetable: #1%
+% \addcontentsline{lot}{table}{\numberline {\thetable}{\ignorespaces #1}}}
+
+% \def\norm#1{\left|\left|#1\right|\right|}
+% \def\MRC{\mathop{\mathrm{MRC}}\nolimits}
+% \def\swap{\mathop{\mathrm{swap}}\nolimits}
+% \def\erf{\mathop{\mathrm{erf}}\nolimits}
+% \def\rank{\mathop{\mathrm{rank}}\nolimits}
+% \def\cond{\mathop{\mathrm{cond}}\nolimits}
+% \def\diag{\mathop{\mathrm{diag}}\nolimits}
+% \def\cov{\mathop{\mathrm{cov}}\nolimits}
+% \def\fl{\mathop{\mathrm{fl}}\nolimits}
+% \def\ex{\mathop{\mathrm{ex}}\nolimits}
+% \def\even{\mathop{\mathrm{even}}\nolimits}
+% \def\round{\mathop{\mathrm{round}}}
+
+\def\Thesis{Dissertation thesis}
+\def\thesis{dissertation thesis}
+
+
+% \newenvironment{proof}{\par\bigskip\noindent{\bf Proof.} }{\hbox{ }\hfill$\square$\par\bigskip\par}
+%
+%mark for the end of a proof or theorem
+% \def\sq{\hfill\hbox{\rlap{$\sqcap$}$\sqcup$}\vskip \bigskipamount}
+% \def\rulepar#1{\noindent\setbox1\hbox{{\bf{#1}}}%
+% \newdimen\sirka\sirka=\wd1%
+% \newdimen\rsirka\rsirka=0.5\textwidth%
+% \advance\rsirka by-40pt%
+% \setbox2\hbox to\rsirka{\hss\vbox to\ht1{\vss\hrule width \rsirka\vss\hrule width \rsirka\vss\hrule width \rsirka\vss}\hss}%
+% \leavevmode\hbox to\hsize{\hss\copy2\hss\copy1\hss\copy2\hss}}
+
+%%--------------------------------------------------------------------------------
+%% The registered trademark symbol, a raised, circled R.  We do a little
+%% negative kern on each side because the edge of the circle is quite far from
+%% the corner of the box.
+%%
+%% Scott D. Anderson (anderson@cs.umass.edu)
+%%
+% \def\Registered{\raisebox{1ex}{\kern-.1em\setbox\@tempboxa\hbox{\footnotesize$\bigcirc$}\hbox to 0pt{\hbox to\wd\@tempboxa{\hss\kern-.5pt\tiny R\hss}\hss}\box\@tempboxa\kern-.1em}}
+%%--------------------------------------------------------------------------------
+
+%%%
+% \def\myplus{\scalebox{0.6}{\begin{picture}(10,10)(-5,-5)\thinlines
+% \put(-5,0){\line(1,0){10}}
+% \put(0,5){\line(0,-1){10}}
+% \end{picture}}}
+% %%%
+% \def\mysquare{\scalebox{0.6}{\begin{picture}(10,10)(-5,-5)\thinlines
+% \put(-5,-5){\line(1,0){10}}
+% \put(5,-5){\line(0,1){10}}
+% \put(5,5){\line(-1,0){10}}
+% \put(-5,5){\line(0,-1){10}}
+% \end{picture}}}
+% %%%
+% \def\mystar{\scalebox{0.6}{\begin{picture}(10,10)(-5,-5)\thinlines
+% \put(-5,0){\line(1,0){10}}
+% \put(0,5){\line(0,-1){10}}
+% \put(-5,-5){\line(1,1){10}}
+% \put(-5,5){\line(1,-1){10}}
+% \end{picture}}}
+% %%%
+% \def\mycross{\scalebox{0.6}{\begin{picture}(10,10)(-5,-5)\thinlines
+% \put(-5,-5){\line(1,1){10}}
+% \put(-5,5){\line(1,-1){10}}
+% \end{picture}}}
+%
+% \def\eqref#1{(\ref{#1})}
+% \def\tabref#1{Tab.~\ref{#1}}
+% \def\figref#1{Fig.~\ref{#1}}
+% \def\algref#1{Alg.~\ref{#1}}
+
+% \def\text#1{#1}
+
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+\newcommand{\tabref}[1]{Tab.~\ref{#1}}
+\def\cond{\mathop{\mathrm{cond}}\nolimits}
+\def\rank{\mathop{\mathrm{rank}}\nolimits}

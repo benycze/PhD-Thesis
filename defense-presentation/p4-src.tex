@@ -1,0 +1,95 @@
+% Headers and parser % % % % % % % % % % % % % % %
+\begin{minipage}[t]{0.48\textwidth}
+\begin{minted}[fontsize=\scriptsize]{C}
+header_type ethernet_t {
+  fields {
+    dAddr : 48; 
+    sAddr : 48; 
+    eType : 16; 
+  }   
+}
+
+header_type vlan_tag_t {
+  fields {
+    pcp   : 3;
+    cfi   : 1;
+    vid   : 12; 
+    eType : 16; 
+  }   
+}
+\end{minted}
+\end{minipage} 
+%
+\begin{minipage}[t]{0.48\textwidth}
+\begin{minted}[fontsize=\scriptsize]{C}
+parser start {
+  return parse_ethernet;
+}
+
+header ethernet_t eth;
+parser parse_ethernet {
+  extract(eth);
+  return select(latest.eType) {
+    0x8100  : parse_vlan;
+    default : ingress;
+  }   
+}
+
+header vlan_tag_t vlan;
+parser parse_vlan {
+  extract(vlan);
+  return ingress;
+}   
+\end{minted}
+\end{minipage}
+
+\pagebreak
+
+% Actions, control, Table % % % % % % % % % % % % % % %
+\begin{minipage}[t]{0.48\textwidth}
+\begin{minted}[fontsize=\scriptsize]{C}
+control ingress {
+  if(valid(vlan)) {
+    // We want to retag or
+    // add a tag based on
+    // the source MAC
+    apply(retagTable);
+  } else {
+    // We want to add
+    // the tag
+    apply(tagTable);
+  }
+}
+
+table retagTable {
+  reads {
+    vlan.vid : exact;
+  }
+  actions {retag; remove;}
+}
+\end{minted}
+\end{minipage}
+\begin{minipage}[t]{0.48\textwidth}
+\begin{minted}[fontsize=\scriptsize]{C}
+table tagTable {
+  reads {
+    eth.sAddr : exact;
+  }
+  actions {add;}
+}
+ 
+function retag(vid) {
+  modify_field(vlan.vid,vid);
+}
+
+function remove() {
+  modify_field(eth.eType,vlan.eType);
+  remove_header(vlan);
+}
+
+function add(vid) {
+  add_header(vlan);
+  ...
+}
+    \end{minted}
+\end{minipage} 

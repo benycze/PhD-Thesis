@@ -1,0 +1,48 @@
+\section{Motivation}
+\subsection*{Contributions}
+\begin{frame}
+    \frametitle{Contributions}
+    \begin{itemize}
+        \fitem \textbf{Keywords}: FPGA, P4, Mapping to VHDL model, 100\,Gbps
+        \fitem \textbf{My research is focused on mapping of abstract description to VHDL model of high-speed network device}
+        \fitem I provided the following:
+        %
+        \begin{enumerate}
+            \fitem Modular architecture of high-speed network device (\textbf{100\,Gbps} and beyond)
+            \fitem Process of mapping from \textbf{P4 language} (introduced in 2013) to the architecture of high-speed network device
+            \fitem Tool --- for verification of architecture and mapping process
+            \fitem Overview of usage of High Level Synthesis (C/C++) in high throughput designs. 
+            Results of this research were used in other research projects
+        \end{enumerate}
+    \end{itemize}
+    \begin{block}{Contribution to the current state-of-the-art}
+        I provided higher degree of flexibility to generation of FPGA based network devices from abstract description (P4 language).
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Motivation}
+    \begin{itemize}
+        \fitem Network devices with fixed functionality are not sufficient
+        \fitem SDN (Software Defined-Networking)
+        \begin{itemize}
+            \fitem Promises higher degree of flexibility 
+            \fitem Two components --- SDN Controller and SDN Datapath
+            \fitem ($\bm{+}$) Application is implemented in controller
+            \fitem ($\bm{+}$) Datapath is reconfigurable 
+            \fitem ($\bm{-}$) HW devices support a limited set of protocols and actions
+        \end{itemize}
+        
+        \fitem Current requirements on modern network devices
+        \begin{itemize}
+            \fitem Easy extensibility with new protocols and actions
+            \fitem Capability to process data at high rates (100\,Gbps and beyond)
+        \end{itemize}
+        
+        \fitem \textit{Field Programmable Gate Array} (FPGA) provides a reprogrammable structure $\rightarrow$ suitable as a target technology 
+        \begin{itemize}
+            \fitem Programmed in Hardware Description Language (HDL)
+            \fitem Hard to learn
+        \end{itemize}
+    \end{itemize}
+\end{frame}

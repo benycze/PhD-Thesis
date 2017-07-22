@@ -1,0 +1,86 @@
+\chapter{Introduction}
+% \enlargethispage*{5pt}
+\label{chap:introduction}
+
+\section{Motivation}
+%Brief description of the topic of the \thesis. A complete explanation of the topic shall be described within chapter 
+%\ref{chap.stateoftheart} at page \pageref{chap.stateoftheart}.
+
+% Tady popisu to, ze se pocitacove site rychle rozviji a je nutne na to reagovat. Proto se nehodi fixni hardware a software
+% a hodne se pouziva konfigurovatelny HW zalozeny na FPGA. Nanestesti jsou HDL jazyky hodne slozite a tak je nemuze
+% pouzivat odbornik na bezpecnost, matematik nebo sitovy admin.
+
+OpenFlow \cite{openflow}, as the most popular embodiment of Software-Defined Networking (SDN), provides a way
+to network dataplane configuration at runtime. The OpenFlow specification strictly defines a set of supported protocols 
+and actions for further processing of incoming traffic (i.e., switches are still mostly fixed). 
+However, modern requirements on networking hardware have a dynamic
+character and administrators of high-end networks want to react to new protocols, security threats,
+novel approaches in traffic engineering, and so on. 
+This isn't feasible with static network hardware and leads to the need to replace the hardware more often than desired.
+
+The fixed behavior of network devices isn't also suitable for further scaling of data centers because such technological solutions 
+need to react to actual demands on network infrastructure. This need is an impulse for developers and manufactures of networking
+hardware because they are motivated to provide highly reconfigurable platforms. The example of such solution is not only the OpenFlow switch
+but also the Facebook's 6-pack \cite{FacebookSixPack} or Wedge \cite{FacebookWedge}. Both solutions are equipped with an ASIC chip
+from Broadcom (for processing of network data at high-speed) and control software which is used as a substrate for implementation
+of control logic. Such solution can be easily reprogrammed to serve as a router, switch, or network filter.
+
+However, such devices cannot be later extended with support of novel classification, parsing, or packet processing functionality
+at high-speed (i.e., they are highly reconfigurable but still fixed). 
+Due to this, developers and manufactures of network hardware are motivated to equip network devices with reprogrammable chips like FPGAs. 
+This platform connects the flexibility of software with parallel nature of hardware into one
+compact package. 
+There are also available hardware platforms \cite{combo-100g} for development of network applications, including frameworks for rapid 
+prototyping \cite{NetCOPEWeb}.
+
+The behavior of implemented functionality (or we can say hardware) is traditionally defined by the Hardware Description Language (HDL) which is not easy to 
+learn. Moreover, development and debugging in such language can be time consuming. 
+Due to this, higher abstractions like C/C++ or Python are being used. 
+However, these abstractions typically suffer from performance issues and it isn't easy to describe high-speed network engine
+in such language. On the other hand, these approaches are suitable for developers who don't have experience with HDL languages.
+We feel that programming of FPGAs using the abstract description is very beneficial because user, developer, or network administrator can be
+focused on network application and doesn't need to care about details of HDL language.
+
+\section{Goals of the Dissertation Thesis}
+% Tady se sepise par zakladnich prispevku moji prace (bude se pak opakovat v abstraktu, intru a zaveru)
+The goals of my \thesis{} are summarized in the following list:
+\begin{enumerate}
+    \item To propose an architecture of network device which is suitable for automatic generation from an abstract description and is
+    capable to implement high-speed packet processing devices.
+    \item To identify and provide building blocks which are suitable for automatic generation and are capable 
+    to work at high throughput.
+    \item To introduce a transformation process for generation of a high-speed network device from the abstract description.
+    \item To evaluate reached results from the view of flexibility, FPGA resources and throughput.
+\end{enumerate}
+
+\section{Structure of the Dissertation Thesis}
+%The \thesis is organized into \dots chapters as follows:
+%\begin{enumerate}
+%\item \emph{Introduction}: Describes the motivation behind our efforts together with our goals. There is also a list of contributions of this \thesis. 
+%\item \emph{Background and State-of-the-Art}: Introduces the reader to the necessary theoretical background and surveys the current state-of-the-art.
+%\item \emph{Overview of Our Approach}: \dots
+%\item \emph{Main Results}: \dots
+%\item \emph{Conclusions}: Summarizes the results of our research, suggests possible topics for further research, and concludes the thesis.
+%\end{enumerate}
+
+The \thesis{} is organized into following chapters:
+\begin{enumerate}
+    \item \emph{Introduction} describes the motivation behind our efforts together with our goals. There is also a list of contributions 
+    of this \thesis{}.
+    \item \emph{Background and Related Work} introduces the reader to the necessary theoretical background and surveys the current 
+    state-of-the-art in high-speed computer networks, together with languages for description of packet processing devices.
+    \item \emph{Architecture of a Network Device} introduces possible targets, details of FPGA platform and it provides the overview of 
+    our architecture of network device which is suitable for automatic generation from the abstract description. 
+    The chapter also introduces our approach behind the mapping to the proposed architecture.
+    \item \emph{Parser and Deparser Architecture} provides further details of input/output network blocks (parser and deparser) together with
+    experimental results. 
+    This chapter also discusses our transformation process from the abstract description to the architecture of these blocks.
+    \item \emph{Match+Action Processing Pipeline} describes our architecture of match and action engine which is based on 
+    mapping of parsed headers to executed actions. 
+    The text also provides details of mapping from the abstract description to the proposed architecture of match and action engine. 
+    The section also discusses the usage of current High-Level Synthesis (HLS) tool for description of processing engines at speed of 100\,Gbps.
+    \item \emph{Use Case Study} introduces results for three use cases of generated pipeline, including Match+Action, to demonstrate the flexibility and
+    easy extensibility with new actions and protocols.  
+    This chapter provides results of required resources, throughput and possible speedup in development.
+    \item \emph{Conclusion} summarizes the results of our research, suggests possible topics, and concludes the thesis.
+\end{enumerate}

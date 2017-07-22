@@ -1,0 +1,89 @@
+\section{Background}
+\subsection*{Fundamental Network Operations}
+\begin{frame} %[allowframebreaks]
+    \frametitle{Fundamental Network Operations}
+    \begin{itemize}
+       \fitem Fundamental network operations from the packet processing point of view
+       \begin{enumerate}
+           \fitem \textbf{Data Extraction} --- extraction of interesting data (i.e, protocol headers) from incoming packets
+           \fitem \textbf{Classification} --- categorization of incoming packets into classes (based on extracted data)
+           \fitem \textbf{Data Processing} --- perform an operation based on the assigned class (e.g., data modification, filtering, and so on)
+        \end{enumerate}
+
+        \fitem These network operations are the core of each network device
+        \fitem Each operation has an influence on throughput        
+    \end{itemize}
+\end{frame}
+
+\subsection*{Languages and Abstractions}
+\begin{frame}[allowframebreaks]
+    \frametitle{Languages and Packet Processing Abstractions}
+    \begin{itemize}
+        \fitem Current HLS tools - not suitable for describing high-speed network devices 
+        \begin{itemize}
+            \fitem The result highly depends on provided description 
+            \fitem Not suitable for novices
+        \end{itemize}
+        %
+        \fitem This drives researchers to provide domain specific languages which are suitable for computer networks 
+        \fitem Such languages typically describe packet processing using the match and action model
+        \begin{enumerate}
+            \fitem \textbf{Gorilla}
+            \begin{itemize}
+                \fitem Lavasani et al. introduce the language and translation to Verilog
+                \fitem Capable to hit 100\,Gbps 
+                \fitem Uses templates of processing engines and packet parsers $\rightarrow$ makes the approach somewhat static 
+                \fitem e.g., you have to implement the protocol parser if you want to support it
+            \end{itemize}
+            
+            \pagebreak
+            
+            \fitem \textbf{SDNet}
+            \begin{itemize}
+                \fitem Commercial solution from Xilinx
+                \fitem Introduces the PX language and translation to Verilog
+                \fitem Flexible solution capable to scale from 1 to 100\,Gpbs
+                \fitem Closed system $\rightarrow$ harder implementation of novel packet processing approaches 
+                (not suitable for researchers)
+            \end{itemize}
+            
+            % Put the P4 to the next slide
+            \fitem \textbf{P4} (Programming Protocol-independent Packet Processors)
+            \begin{itemize}
+                \fitem High-level and platform-agnostic language which is developed since 2013
+                \fitem Provides a way to define a packet processing functionality
+                \fitem Designed to be platform independent (CPU, NPU, ASIC, FPGA)
+            \end{itemize}
+            
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\subsection*{Specification of P4 Language}
+\begin{frame}
+    \frametitle{P4} 
+    \framesubtitle{Popularized in  [P4CES16], [ROOT16]}
+    \begin{itemize} 
+        \fitem Relatively simple syntax\footnote{Specification of the language is available at \url{www.p4.org}}
+        \fitem The language defines five basic aspects of packet processing:
+        \begin{enumerate}
+            \fitem \textbf{Header Format} --- defines the structure of protocol
+            \fitem \textbf{Packet Parser} --- defines the process of header parsing
+            \fitem \textbf{Table Specification} --- defines how extracted fields are mapped to actions
+            \fitem \textbf{Action Specification} --- defines compound actions that may be executed for packets
+            \fitem \textbf{Control Program} --- defines the control flow among the tables
+        \end{enumerate} 
+        \fitem Front end of the compiler is available under open source license 
+        $\rightarrow$ compilers for different targets can be implemented      
+        \fitem The next step in the SDN ecosystem $\rightarrow$ provides a way for the specification
+        of SDN Datapath functionality
+    \end{itemize}
+\end{frame}
+
+\subsection*{Example}
+\begin{frame}[fragile,allowframebreaks]
+    \frametitle{Example of P4 Program}
+    \framesubtitle{Simple VLAN Tagging Device}
+    % Include the file with example
+    \input{p4-src}
+\end{frame}

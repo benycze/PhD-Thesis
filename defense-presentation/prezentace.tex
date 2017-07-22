@@ -1,0 +1,94 @@
+\documentclass[a4paper]{beamer}
+%
+% Josef Hlavac & Tomas Zahradnicky (21.10.2010)
+%
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
+%\pgfpagesuselayout{resize}[a4paper,border shrink=5mm,landscape]
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usetheme{Frankfurt}
+\usecolortheme{whale}
+\useinnertheme{circles}
+\usepackage{subfigure}
+\usepackage[czech,slovak,english]{babel}
+%\useinnertheme{rounded}
+\usefonttheme{professionalfonts}
+\usepackage{bm}
+\usepackage{fixltx2e}
+\usepackage{minted}
+% Multiple rows in the table
+\usepackage{multirow}
+%
+\def\uv#1{\char92\relax #1\char34\relax}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Disable the navigation bar in bemaer
+\beamertemplatenavigationsymbolsempty
+% Useful TODO command
+\newcommand{\todo}[1]{\noindent\fbox{\parbox{0.9\textwidth}{\color{red} \bf TODO: #1}\newline}}
+% Counter for remarks
+\newcounter{RemarkCounter}
+%Item which fills the place
+\newcommand{\fitem}[0]{\vfill\item}
+% Define new column type (align to center in horizontal and vertical position)
+\usepackage{array}% http://ctan.org/pkg/array
+\newcolumntype{C}{>{\centering\arraybackslash} m{6cm} }
+% Helping command for making of more space in the table
+\newcommand\T{\rule{0pt}{2.3ex}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\Title{Ing.}
+\newcommand\FirstName{Pavel}
+\newcommand\FirstNameAbbreviated{P}
+\newcommand\LastName{Benáček}
+\newcommand\Email{pavel.benacek@fit.cvut.cz}
+\newcommand\DissertationTitle{Generation of High-Speed Network Device from High-Level Description}
+%\newcommand\Department{Department of Theoretical Computer Science}
+\newcommand\Department{Department of Digital Design}
+%\newcommand\Department{Department of Software Engineering}
+%\newcommand\Department{Department of Computer Systems}
+\newcommand\Faculty{Faculty of Information Technology}
+\newcommand\University{Czech Technical University in Prague}
+\newcommand\FacultyAndUniversityAbbr{FIT CTU}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subject{Generation of High-Speed Network Device from High-Level Description}
+\author[\FirstNameAbbreviated. \LastName]{
+% My name
+Student: \Title{}\,\FirstName{} \LastName{} \\ 
+% Supervisor
+Supervisor: doc.\,Ing.\,Hana Kubátová,\,CSc. \\ 
+% Co-supervisor
+Co-Supervisor: Ing.\,Viktor Puš,\,Ph.D.
+}
+
+\title{\DissertationTitle}
+\titlegraphic{\includegraphics[width=1.5cm]{logo/LogoCVUT.pdf}}
+\institute[\FacultyAndUniversityAbbr]{\Department\\ \Faculty\\ \University}
+\date{March 22, 2017}
+% Setup the number of frames (current/total)
+\setbeamertemplate{footline}[frame number]
+
+% Title page
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%\section{Outline}
+%\subsection*{Outline}
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents
+%\end{frame}
+
+% Basic body of presentation
+\input{motivation}
+\input{operations-and-languages}
+\input{overview-of-architecture}
+\input{conclusion}
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % %  % % DISCUSSION % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\appendix
+\input{questions}
+
+\end{document}

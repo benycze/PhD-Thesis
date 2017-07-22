@@ -1,0 +1,233 @@
+% Start every record with A.#
+\newcounter{MyPublRefCount}
+\setcounter{MyPublRefCount}{0}
+\def\bibauthor#1{\addtocounter{MyPublRefCount}{1}\bibitem[A.\theMyPublRefCount]{#1}}
+
+% list your own books or papers in refereed journals or conference proceedings
+% or chapters in scientific monographies that are RELEVANT FOR YOUR THESIS
+\renewcommand\bibname{Reviewed Publications of the Author Relevant to the Thesis}
+% \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\protect\numberline{}{Reviewed Relevant Publications of the Author}}
+\begin{thebibliography}{A.9}%here fill-in the longest label in the list of your publications
+\itemsep=0pt
+%
+%----------------------------------------------------
+% \bibauthor{ID}. Cite as \cite{ID}.
+
+\section*{Reviewed publications}
+\bibauthor{2016fccm-p4-parser}
+P. Ben\'{a}\v{c}ek, V. Pu\v{s} and H. Kub\'{a}tov\'{a}.
+\newblock \textit{P4-to-VHDL: Automatic Generation of 100Gbps Packet Parsers}.
+\newblock IEEE 24\textsuperscript{th} Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM2016), Washington D.C., USA, 
+\newblock 2016.
+
+\bibauthor{2015h2rc-p4-parser}
+P. Ben\'{a}\v{c}ek, V. Pu\v{s} and H. Kub\'{a}tov\'{a}.
+\newblock \textit{Automatic Generation of 100 Gbps Packet Parsers from P4 Description}.
+\newblock First International Workshop on Heterogeneous High-performance Reconfigurable Computing, Austin, TX, USA, 
+\newblock 2015.
+
+\bibauthor{2014binder}
+P. Ben\'{a}\v{c}ek, H. Kub\'{a}tov\'{a} and V. Pu\v{s}.
+\newblock \textit{Architecture of Effective High-Speed Network Stream Merger}.
+\newblock Digital System Design (DSD), 17\textsuperscript{th} Euromicro Conference on Digital System Design, pp. 459--464, Verona, Italy,
+\newblock 2014.
+
+\bibauthor{2014hls-instructions}
+P. Ben{\'a}{\v{c}}ek and V. Pu{\v{s}}.
+\newblock \textit{Application specific processor with high-level synthesized instructions}.
+\newblock ACM/SIGDA international symposium on Field-Programmable Gate Arrays, pp. 246--246, Monterey, CA, USA,
+\newblock 2014.
+
+\bibauthor{2014sdmcpd-monterey}
+P. Ben\'{a}\v{c}ek, T. \v{C}ejka, H. Kub\'{a}tov\'{a} and R. Bla\v{z}ek.
+\newblock \textit{Change-Point Detection Method on 100 Gb/s Ethernet Interface}.
+\newblock ACM/IEEE Symposium on Architectures for Networking and Communications Systems, Marina del Rey, CA, USA,
+\newblock 2014.
+
+\bibauthor{2014sdmmemincs}
+P. Ben\'{a}\v{c}ek, T. \v{C}ejka, H. Kub\'{a}tov\'{a}, L. Kekely and R. Bla\v{z}ek.
+\newblock \textit{FPGA Accelerated Change-Point Detection Method for 100 Gb/s Networks}.
+\newblock Doctoral Workshop on Mathematical and Engineering Methods in Computer Science, Tel\v{c}, Czech Republic,
+\newblock 2014.
+
+\bibauthor{2016h2rc-p4}
+P. Ben\'{a}\v{c}ek, V. Pu\v{s} and P. Ka\v{s}tovsk\'y.
+\newblock \textit{P4-to-FPGA: High Performance Reconfigurable Networking (poster)}.
+\newblock Second International Workshop on Heterogeneous High-performance Reconfigurable Computing, Salt Lake City, UT, USA,
+\newblock 2016.
+
+\bibauthor{2016stanford-p4-demo}
+P. Ben{\'a}{\v{c}}ek and V. Pu{\v{s}} 
+\newblock \textit{P4-to-VHDL: Generating High Speed Network Devices (poster)}. 
+\newblock P4 Workshop, Stanford, California, USA, 
+\newblock 2016. Available from: \url{https://www.liberouter.org/wp-content/uploads/2016/06/poster\_p4\_06\_2016.pdf}
+
+\bibauthor{kekely2014trade}
+L. Kekely, V. Pu\v{s}, P. Ben{\'a}\v{c}ek and J. Ko\v{r}enek.
+\newblock \textit{Trade-offs and progressive adoption of FPGA acceleration in network traffic monitoring}.
+\newblock Field Programmable Logic and Applications (FPL), 24\textsuperscript{th} International Conference, pp. 1--4, Munich, Germany,
+\newblock 2014.
+\smallskip \\ \smallskip The paper has been cited in:
+\begin{itemize}
+    \item D. Grochol, L. Sekanina, M. \v{Z}\'{a}dn\'{i}k, J. Ko\v{r}enek. \textit{Evolutionary circuit design for fast FPGA-based classification of network application protocols}. 
+    Applied Soft Computing, Volume 38, January 2016, pp. 933-941.
+    \item L. Tang, J. Yan, Z. Sun, T. Li, M. Zhang. \textit{Towards high-performance packet processing on commodity multi-cores: current issues and future directions}.
+    Research Paper Special Focus On Future Internet Architecture And Protocol Science China Information Sciences, December 2015, Volume 58, Issue 12, pp. 1-16.
+\end{itemize}
+
+\section*{Submitted publications}
+\bibauthor{2016MicproP4}
+P. Ben\'{a}\v{c}ek, H. Kub\'{a}tov\'{a} and V. Pu\v{s}.
+\newblock \textit{P4-to-VHDL: Automatic Generation of High-Speed Input and Output Network Blocks}.
+\newblock Microprocessors and Microsystems, Elsevier Journal, 2016.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Example of the citation                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibitem{YOURPUBL-ZZZ1}
+%Gortz, R.; T\"ol\"ok\"o, F.
+%\newblock On the Carpathian Castle.
+%\newblock In: \textit{Transylvanian Journal of \dots}.
+%\newblock Werst, Romania,
+%\newblock 2010.
+%% nepovinny blok s citaci:
+%% ************* 
+%\bigskip \\ \smallskip The paper has been cited in:
+%\begin{itemize}
+%\item Nov\'ak\r{u}, \v{S}. Carpathian Castle Revealed. \textit{International Symposium on Carpathian Legends}. 1:319--323, 2010.
+%\end{itemize}
+% *************
+\end{thebibliography}
+
+\renewcommand\bibname{Remaining Publications of the Author Relevant to the Thesis}
+% \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\protect\numberline{}{Remaining Relevant Publications of the Author}}
+\begin{thebibliography}{A.9}%here fill-in the longest label in the list of your publications
+%----------------------------------------------------
+
+\bibauthor{2016benacek-phd-minimum}
+P. Ben\'{a}\v{c}ek.
+\newblock \textit{Methodology for Analysis of High-Speed Networks}. 
+\newblock Ph.D. Minimum Thesis,  Faculty of Information Technology, Czech Technical University in Prague, Czech Republic, 
+\newblock 2014.
+
+\bibauthor{2016pesw}
+P. Ben\'{a}\v{c}ek, H. Kub\'{a}tov\'{a} and V. Pu\v{s}.
+\newblock \textit{P4-to-FPGA: Translating P4 to VHDL}.
+\newblock The 4\textsuperscript{th} Prague Embedded Systems Workshop (PESW 2016), ISBN 978-80-01-05984-5, Roztoky, Czech Republic,
+\newblock 2016.
+
+\bibauthor{2016cesnet-p4}
+P. Ben{\'a}{\v{c}}ek and V. Pu{\v{s}} 
+\newblock \textit{The P4 Language as the Future of SDN (CZ)}. 
+\newblock CESNET blog, 
+\newblock 2016. Available from: \url{https://www.cesnet.cz/2016/01/jazyk-p4/}
+
+\bibauthor{2016root-p4}
+P. Ben{\'a}{\v{c}}ek and V. Pu{\v{s}} 
+\newblock \textit{The P4 Language as the Future of SDN (CZ)}. 
+\newblock root.cz (part 1 and part 2), 
+\newblock 2016. Available from: 
+\newblock Part 1 - \url{http://www.root.cz/clanky/jazyk-p4-jako-budoucnost-sdn/}, 
+\newblock Part 2 - \url{http://www.root.cz/clanky/jazyk-p4-jako-budoucnost-sdn-dokonceni/}
+
+% Switch language to czech, print some publications and swithch it back to the english :)
+\selectlanguage{czech}
+
+\bibauthor{benacekpad2012}
+P. Ben\'{a}\v{c}ek.
+\newblock \textit{Anal\'{y}za rychl\'{y}ch s\'{i}\v{t}ov\'{y}ch p\v{r}enos\r{u}}.
+\newblock \v{C}esko-slovensk\'{y} semin\'{a}\v{r} PAD, pp. 9--12, ISBN 978-80-01-05106-1, Milovy ve \v{Z}\v{d}\'{a}rsk\'{y}ch vr\v{s}\'{i}ch, \v{C}esk\'{a} republika,
+\newblock 2012.
+\newblock \textit{The paper was awarded as the best publication of first-year students.}
+
+\bibauthor{benacekarchitektura}
+P. Ben\'{a}\v{c}ek.
+\newblock \textit{Architektura pro m\v{e}\v{r}en\'{i} v re\'{a}ln\'{e}m \v{c}ase na vysokorychlostn\'{i}ch s\'{i}t\'{i}ch}.
+\newblock \v{C}esko-slovensk\'{y} semin\'{a}\v{r} PAD, pp. 45--50, ISBN 978-80-261-0270-0, Tepl\'{a}, \v{C}esk\'{a} republika,
+\newblock 2013.
+
+\bibauthor{benavcekreal}
+P. Ben\'{a}\v{c}ek.
+\newblock \textit{Real-time Network Measurement for High-Speed Networks}.
+\newblock The 1\textsuperscript{st} Embedded Systems Workshop (ESW), Teme\v{s}v\'{a}r, Czech Republic,
+\newblock 2013.
+
+\selectlanguage{UKenglish}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Example of the citation                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibitem{YOURPUBL-MINIMUM}
+%Gortz, R.
+%\newblock \textit{MINIMUM TITLE}.
+%\newblock Ph.D. Minimum Thesis, Faculty of Information Technology,
+%\newblock Prague, Czech Republic,
+%\newblock 2010.
+%% nepovinny blok s citaci:
+%% ************* 
+%\bigskip \\ \smallskip The paper has been cited in:
+%\begin{itemize}
+%\item L\'ef\`evre, \c{C}. \textit{Le Ch\^ateau des Carpathes : Le fin alternatif d\'ecouvert~!}, \dots.
+%\item Q. Ma\~nana. \dots
+%\item H. Erd\H{o}s. \dots
+%\item \r{A}. S\o renson. \dots
+%\end{itemize}
+% *************
+\end{thebibliography}
+
+\renewcommand\bibname{Remaining Publications of the Author}
+% \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\protect\numberline{}{Remaining Publications of the Author}}
+\begin{thebibliography}{A.9}%here fill-in the longest label in the list of your publications
+%----------------------------------------------------
+
+\bibauthor {presentcipher}
+P. Ben\'{a}\v{c}ek and M. Novotn\'{y}.
+\newblock \textit{Implementing Brute-Force Attack on PRESENT Cipher}.
+\newblock Digital System Design (DSD), 13\textsuperscript{th} Euromicro Conference on Digital System Design, pp. 51--52, Linz, Austria,
+\newblock 2010.
+
+\bibauthor{cometreport}
+P. Ben\'{a}\v{c}ek, T. \v{C}ejka, \v{S}. Friedl and R. Krej\v{c}\'{i}.
+\newblock \textit{COMET - COMBO Ethernet Tester}.
+\newblock Annual report, CESNET z.s.p.o., Prague, Czech Republic,
+\newblock 2013.
+\newblock Available from: \url{http://www.cesnet.cz/wp-content/uploads/2013/03/comet.pdf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Example of the citation                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibitem{YOURPUBL-P2}
+%Gortz, R.
+%\newblock Another publication.
+%\newblock \textit{36\textsuperscript{th} International Conference on \dots}. pp. 19--24, \v{S}trbsk\'e pleso, Slovak Republic,
+%\newblock 2010.
+%*************************************************************************
+\end{thebibliography}
+
+\renewcommand\bibname{Evaluation Activities}
+% \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\protect\numberline{}{Remaining Publications of the Author}}
+\begin{thebibliography}{A.9}%here fill-in the longest label in the list of your publications
+%----------------------------------------------------
+\bibauthor{reconfig2016}
+Conference Programme Committee member in the 
+\textit{Track on Reconfigurable Computing for Networks and Communications.}
+\newblock International Conference on Reconfigurable Computing and FPGAs (ReConFig'2016), Cancum, Mexico,
+\newblock 2016.
+\newblock Available from: \url{http://www.reconfig.org/index.php?option=com\_content&view=article&id=6&Itemid=134}
+
+\bibauthor{jpdc-2016}
+Review of article for the \textit{Journal of Parallel and Distributed Computing}. 
+\newblock Article in journal, ISSN 0743-7315,
+\newblock 2016.
+\newblock Available from: \url{http://www.journals.elsevier.com/journal-of-parallel-and-distributed-computing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Example of the citation                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibitem{YOURPUBL-P2}
+%Gortz, R.
+%\newblock Another publication.
+%\newblock \textit{36\textsuperscript{th} International Conference on \dots}. pp. 19--24, \v{S}trbsk\'e pleso, Slovak Republic,
+%\newblock 2010.
+%*************************************************************************
+\end{thebibliography}

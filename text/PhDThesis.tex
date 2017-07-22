@@ -1,0 +1,258 @@
+%% History:
+% Ondrej Guth (01.05.2015)
+% Josef Hlavac & Tomas Zahradnicky (4.10.2010)
+%  + Built on the FEL CVUT template by Daniel Sykora and Pavel Tvrdik
+%  + Made for FIT CVUT
+%  + Joined several chapters and cleaned
+%  + Undefined references are typeset in an orange box to alert the writer!
+%  + Index is automatically printed if the \usepackage{index} and
+%    \newindex{default}{idx}{ind}{Index} lines are uncommented.
+%
+\documentclass[12pt,twoside,a4paper,final]{memoir}%two-page printing
+
+\usepackage{a4wide}
+\usepackage{fancyvrb}
+\usepackage{datetime}
+%\usepackage[T1]{fontenc}
+\usepackage[czech,UKenglish]{babel}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{subcaption}
+\usepackage{pdflscape}
+\usepackage{placeins}
+%\usepackage{setspace}
+%\usepackage{epic} % Images drawn in Xfig, exported as .epic
+\usepackage{longtable}
+\usepackage{hyperref}
+% \usepackage[hidelinks]{hyperref} %hyperlinks without colour boxes
+% \usepackage[usenames]{color}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% \usepackage{tikz}
+
+% Configuration of algorithm package
+\usepackage[ruled,vlined]{algorithm2e}
+\SetAlFnt{\small\sffamily}
+\SetKwInput{KwInput}{Input}
+
+% Helping user-defined macros
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand\T{\rule{0pt}{2.3ex}}
+
+%Command for parametrized cell in tabular
+% usage : \multicell{WIDTH}{VSPACE}{TEXT}
+\newcommand{\multicell}[3]{\parbox{#1}{\vspace{#2} #3 \vspace{#2}}}
+
+%\usepackage[chapter]{algorithm}
+% \usepackage{algpseudocode}
+% \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+% \renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+%\usepackage{proof}
+%\usepackage{latexsym}
+%\usepackage{epsfig}
+% \usepackage{subfigure}
+% \usepackage{multirow}
+%\usepackage{index}
+%\newindex{default}{idx}{ind}{Index}
+
+\usepackage[
+nonumberlist, %do not show page numbers
+acronym,      %generate acronym listing   -> Not used in this example (see line with %%% )
+nomain,
+numberedsection
+% notoc,          %show listings as entries in table of contents
+]      %use section level for toc entries
+{glossaries}
+\makeglossaries
+\input phdmacro.tex %couple of macros for formatting the dissertation thesis,
+                    %your personal and specific macros can be placed also there
+
+
+\renewcommand{\labelitemi}{\(\circ\)}
+
+\newenvironment{chapterintro}{\slshape}{\par}
+
+\usepackage{etoolbox}
+% fix TOC in memoir class
+\makeatletter
+\renewcommand{\@pnumwidth}{2em} 
+\renewcommand{\@tocrmarg}{3em}
+\patchcmd{\@endtheorem}{\@endpefalse}{}{}{}
+\patchcmd{\endproof}{\@endpefalse}{}{}{}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configure the disertation thesis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\DissTitle{Generation of High-Speed Network Device from High-Level Description}
+%\newcommand\DissTitle{Methodology for Analysis of High-Speed Computer Networks}
+
+\newcommand\FirstandFamilyName{Ing.\,Pavel Ben\'{a}\v{c}ek}
+\newcommand\Email{pavel.benacek@fit.cvut.cz}
+\newcommand\Month{Prague, \monthname}
+\newcommand\Year{\the\year}
+\newcommand\Supervisor{doc. Ing. Hana Kub\'{a}tov\'{a}, CSc.}
+\newcommand\SupervisorAffiliation{
+Department of Digital Design\\
+Faculty of Information Technology\\
+Czech Technical University in Prague\\
+Th\'{a}kurova 9\\
+160 00 Prague 6\\
+Czech Republic}
+%-> uncomment if you have a thesis co-supervisor
+\newcommand\CoSupervisor{Ing. Viktor Pu\v{s}, Ph.D.}
+\newcommand\CoSupervisorAffiliation{
+CESNET a.l.e.\\
+Zikova 4\\
+160 00 Prague 6\\
+Czech Republic}
+
+\newcommand\PhDProgram{Informatics}
+%\newcommand\PhDSpecialization{Informatics}
+\newcommand\Department{Department of Digital Design}
+\newcommand\Faculty{Faculty of Information Technology}
+\newcommand\University{Czech Technical University in Prague}
+\newcommand\Address{Th\'akurova 9, 160 00 Prague 6, Czech Republic}
+
+\def\UrlBreaks{\do\/\do\-}
+
+\maxsecnumdepth{subsubsection}
+\setcounter{tocdepth}{2}
+\makeheadstyles{FITthesis}{
+	\chapterstyle{madsen}
+	\setsecheadstyle{\Large\bfseries\sffamily}
+	\setsubsecheadstyle{\large\bfseries\sffamily}
+	\setsubsubsecheadstyle{\bfseries\sffamily}
+}
+\headstyles{FITthesis}
+
+% \includeonly{
+% 	tex/abstract
+% 	,tex/acknowledgement
+% 	,tex/introduction
+% 	,tex/stateoftheart
+% 	,tex/conclusions
+% }
+
+
+% List of acronyms
+%\newacronym{DFA}{DFA}{deterministic finite automaton}
+%\newacronym{NFA}{NFA}{nondeterministic finite automaton}
+%\newacronym{FA}{FA}{finite automaton}.
+
+\input{hyphenation}
+
+\begin{document}
+
+% Switch language to UKenglish .. just to be sure :)
+\selectlanguage{UKenglish}
+
+% Define block styles
+\theoremstyle{definition}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{preposition}[lemma]{Preposition}
+\newtheorem{example}[lemma]{Example}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{property}[lemma]{Property}
+\newtheorem{observation}[lemma]{Observation}
+\theoremstyle{remark}
+\newtheorem{notation}[lemma]{Notation}
+\newtheorem{note}[lemma]{Note}
+
+% allow @ to appear in macro names
+% \makeatletter
+
+% % produce undefined references in an orange box rather than just ??
+% \def\@setref#1#2#3{%
+%   \ifx#1\relax
+%    \protect\G@refundefinedtrue
+%    \nfss@text{\reset@font\bfseries\fcolorbox{black}{Orange}{??}}%
+%    \@latex@warning{Reference `#3' on page \thepage \space
+%              undefined}%
+%   \else
+%    \expandafter#2#1\null
+%   \fi}
+%
+
+\frontmatter
+
+\coverpagestarts
+
+\pagestyle{ruled}
+
+\include{chapters/abstract}
+
+% \newpage
+\include{chapters/acknowledgement}
+
+% \newpage
+\include{chapters/dedication}
+% \newpage
+
+\tableofcontents*
+%------------------------------
+%  LOF, LOT
+%----------------------------------------------------------------------------------------------------------
+% \newpage\addcontentsline{toc}{chapter}{\protect\numberline{}{List of Figures}}
+
+\clearpage
+\listoffigures*
+% \newpage\addcontentsline{toc}{chapter}{\protect\numberline{}{List of Tables}}
+
+\clearpage
+\listoftables*
+% \newpage\addcontentsline{toc}{chapter}{\protect\numberline{}{List of Algorithms}}
+
+\clearpage
+\listofalgorithms
+
+% \newpage\addcontentsline{toc}{chapter}{\protect\numberline{}{Definitions, Notations and Abbreviations}}\input{tex/definitions.tex}
+%----------------------------------------------------------------------------------------------------------
+% \newpage
+\setsecnumdepth{part}
+\include{chapters/abbreviations}
+\setsecnumdepth{subsubsection}
+
+% \mainbodystarts
+\mainmatter
+
+%\singlespacing
+%\onehalfspacing
+%\doublespacing
+%\part{The Parameter Extraction Methodology}
+%-----------------------
+%  Chapters start here
+\include{chapters/introduction}
+\include{chapters/background-and-related-work}
+\include{chapters/device-architecture}
+\include{chapters/parser-deparser-architecture}
+\include{chapters/match-action-tables}
+\include{chapters/use-case-study}
+\include{chapters/conclusions}
+%------------------------------------------------------------------------------------------
+% Use bibtex to produce bibliography used in the thesis, except for your own publications
+%------------------------------------------------------------------------------------------
+\bibliographystyle{iso690}
+%\bibliographystyle{abbrv}
+% \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\protect\numberline{}{Bibliography}}
+\bibliography{bibliography}
+
+%-----------------------
+% Publications of the author
+\input{chapters/publications.tex}
+
+%-----------------------
+% Appendis 
+%\appendix
+%\include{chapters/appendix1}
+
+% % Add the index if it is requested above
+% \ifx\printindex\undefined\relax\else\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\protect\numberline{}{Index}}\fi
+% \ifx\printindex\undefined\relax\else\printindex\fi
+\end{document}

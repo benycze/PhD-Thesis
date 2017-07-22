@@ -1,0 +1,118 @@
+\widowpenalty=9999
+\chapter{Conclusion}
+\label{chap:conclusion}
+% Summarize each chapter in one paragraph, point out the most important findings.
+The aim of my \thesis{} is to provide the process of mapping from abstract language to the architecture of network device which is 
+suitable for automatic generation and capable to hit processing speed of 100\,Gbps.
+
+We propose the Parser-Deparser model. Our model of network device is based on the standard P4 model and it consists of three modules. 
+The first module, parser, is used to break the incoming network data into individual header fields
+(i.e., it has the same functionality like parser in P4 model).
+The output of this module is a set of structured extracted fields, metadata and valid bits. All these inputs are passed
+to the processing block which does not strictly define the structure of processing part 
+(compared to the standard P4 model where the structure of processing part is given). 
+Therefore, we are able to connect strong ideas of P4 model and rapid implementation of novel network functionality 
+(e.g., pattern matching, new architectures of network devices, novel classification and so on). 
+Finally, the last module, deparser, is used for construction of network packet back from protocol headers and valid bits.
+This approach is general enough for variety of network applications. 
+The Parser-Deparser model is capable to accommodate the P4 device model 
+because the processing part allows mapping of Ingress Match+Action, Queues and/or Buffers and Egress Match+Action 
+to predefined architecture.
+
+We propose the architecture of our network pipeline which is suitable for automatic generation and capable to hit high-speeds. 
+It is an example of the trade-off between complexity of high-speed network hardware blocks and transformation process. 
+The proposed architecture contains several building blocks which are connected via predefined interfaces into deep high-speed pipeline.
+We introduced the mapping from higher level (P4 language) to the architecture of parser, deparser, Match+Action tables,
+Match+Action routers and Match+Action groups. The description on higher levels allows the user to be focused on implementation of 
+network application without deep knowledge of underlying architecture. This approach was demonstrated on two examples --- 
+(1)~transformation of P4 description to VHDL and (2)~extension of available action set with usage of current HLS tool where the
+description of user action was provided in C/C++ language.
+Our results shows that both approaches are capable to produce synthesizable code of a network device 
+which is able to hit processing speed of 100\,Gbps.
+
+The transformation from the P4 to VHDL was demonstrated on three use cases --- IPv4 Filter, IPv4+IPv6 Filter and Full Filter.
+These use cases show the flexibility and easy extensibility of our architecture with new protocols and actions. The behavior of each use case
+was described in P4 language and translated using our tool. We were able to reach the throughput in range from 77.6 to 100\,Gbps
+and the frequency of 225.85\,MHz on Xilinx Virtex 7 XCVH580T FPGA. 
+
+The transformation from C/C++ to VHDL was demonstrated on the extension of processing part with user defined actions.
+The P4 language defines a fixed set of primitive actions. 
+Unfortunately, this limitation is not suitable for future development because we typically need to extend the current action set with new actions 
+(e.g., computation of advanced statistics, and so on). The user defined actions can be described in higher language which
+is beneficial for fast development. Moreover, the source code of new action can by provided by administrator, mathematician or security expert.
+The results of this research were verified in SDM \cite{KekelyPusKorenekSDM} project which is actively used for monitoring and protection 
+of computer networks.
+
+\section{Contributions of the Thesis}
+
+The contributions of my \thesis{} are summarized in the following list:
+\begin{enumerate}
+    \item The modular architecture of network device which is suitable for generation of high-speed packet processing devices 
+    from the abstract description.
+    \item The structure and transformation process for individual parts of generated high-speed network device: 
+    parser, Match+Action router, Match+Action table and deparser.
+    \item The architecture of parallel Action Engine which is capable to process traffic at speed of 100\,Gbps. 
+    The architecture of this engine was verified in SDM \cite{KekelyPusKorenekSDM} project.
+    It is also capable to accommodate High-Level Synthesized engines which are described in C/C++ language.
+    Results of this research are used in \cite{KekelyPusKorenekSdmIeeeTransactionComputerNetworks}.
+    \item The tool, which generates the proposed architecture of network device from the abstract description in P4 language.
+    \item Experimental results for parser, deparser and Match+Action processing pipeline. 
+    Finally, the text provides three use cases which were tested 
+    against Spirent's Hypermetrics MX-100G-F1 module (SPT-N11U chassis) at speed of 100\,Gbps. 
+    Each use case was described in P4 language, translated to VHDL and tested in real hardware environment.
+    The provided use cases demonstrate the flexibility and easy extensibility with support of new protocols and actions.
+\end{enumerate}
+
+\section{Future Work}
+The author of the \thesis{} suggests to explore following:
+\begin{itemize}
+    \item Provide a general architecture of \textit{Check} engine.
+    \item Investigate further optimizations of generated structure 
+    (e.g., automatic detection of similar protocols which leads to optimization of PGR's structure).
+    \item Provide an effective architecture of deparser block, capable to construct packets at speeds above 100\,Gbps.
+    \item Provide architecture of more complex \textit{Search Engine} in Match+Action table.
+    \item Extend the Match+Action table with advanced stateful processing (inspired by OpenState \cite{OpenStateSpec}).
+    \item Provide a study of this technology for speeds beyond 100\,Gbps (e.g., for upcoming 400\,Gbps Ethernet standard).
+    %\item Provide similar technology of processing pipeline for speeds up to 400\,Gbps. 
+\end{itemize}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % Originalni text 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%Chapter \ref{chap:stateOfTheArt} discusses the current approaches in the area of packet parsing, classification and data processing. 
+%The chapter also introduces modern languages and abstractions of packet processing devices. We choose the P4 language as an input
+%for our mapping process because this language provides good abstraction, is developed as open standard and is
+%considered to be device and platform independent.
+%
+%Chapter \ref{chap:architectureOfNetworkDevice} introduces possible target architectures for mapping of P4 program. 
+%Namely, the chapter introduces details about software implementations capable 
+%to process 10\,Gbps, Network Processing Units (NPUs) capable to process traffic at speed of 40\,Gbps, and Field Programmable Gate Array (FPGA)
+%which is capable to process data at speed of 100\,Gbps.
+%We select the FPGA as our target platform because it connects parallel nature of hardware with flexibility of software. 
+%The chapter also introduces the idea of mapping to the architecture of network device which is based on Parser-Deparser model.
+%The proposed architecture consists of several building blocks which are connected to processing pipeline where some 
+%parts of these blocks are generated, some configured and some instantiated.
+%
+%Chapter \ref{chap:parserDeparserArchitecture} introduces detailed architecture and transformation process from P4 language to parser and deparser 
+%blocks. 
+%%Both blocks are carefully designed to meet a trade-off between complexity of hardware and generator. 
+%Parser consists of pipeline modules and Protocol Analyzers which are connected via common interface. 
+%The same architecture is used in the case of deparser.
+%This approach is beneficial during generation of mentioned blocks because the structure of generated hardware is homogenous. 
+%The text provides the algorithms for transformation from P4 to the structure of parser and deparser.
+%We also compared generated to hand-written parsers. The cost for automatic generation is roughly doubled latency and chip area. 
+%Finally, we connected parser and deparser together and perform throughput tests in real hardware platform. 
+%Results show that generated blocks are capable to hit speed of 100\,Gbps, except some packet lengths when the inefficiency in deparser shows up. 
+%The text also proposes required changes to meet the full throughput of 100\,Gbps.
+%
+%Chapter \ref{chap:matchActionProcessing} introduces results of our research regarding the Match+Action processing pipeline with further
+%details about transformation algorithm and generated architecture. We introduced mapping from P4 language to 
+%Match+Action groups, Match+Action tables and Match+Action routers which are the main building blocks of our processing pipeline. 
+%All mentioned modules use the common communication interface which is beneficial during automatic generation.
+%The text also provides details about usage of current HLS tool which can be used for easy extension of available actions in Action Engine.
+%That is, we can provide abstract definition of user-defined engines in C/C++ and translate this code to HDL language. 
+%After that, the generated code is connected into existing infrastructure which is capable to process data at speed of 100\,Gbps. 
+%
+%Finally, Chapter \ref{chap:use-case-study} provides results for three use cases where each use case was generated from P4 description.
+%We provided results of required resources, throughput and number of generated lines, together with required time for compilation.
+%Each use case meet throughput in range from 77.6 to 100\,Gbps at frequency of 225.8\,MHz on Xilinx Virtex-7 XCVH580T FPGA.
