@@ -1,5 +1,8 @@
 # Ph.D. Thesis - Generation of High-Speed Network Device from High-Level Description
-This is the public repository of my Ph.D. thesis, including the presentation from my defense. 
+
+A dissertation thesis submitted to the Faculty of Information Technology, Czech Technical University in Prague, in partial fulfilment of the requirements for the degree of Doctor. 
+
+The repository contains the LaTeX sources of my Ph.D. thesis and the defense presentation.
 
 The following list contains required tools:
 * LaTeX
