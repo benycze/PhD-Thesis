@@ -10,6 +10,8 @@ The following list contains required tools:
 * make
 * Dia
 
+The translated PDF can be downloaded [here](text/phd-benacek.pdf).
+
 The project also contains the profile for textstudio (http://www.texstudio.org/) for easier preparation of LaTeX documents.
 
 ## Abstract
